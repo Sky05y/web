@@ -1,4 +1,4 @@
-/* 高端大气风格调整 */
+/* 启动动画 */
 body {
     font-family: 'Roboto', sans-serif;
     background-image: url('bg.jpg'); /* 替换为您的图片URL */
@@ -11,15 +11,45 @@ body {
     align-items: center;
     height: 100vh;
     color: #ffffff; /* 文字颜色为白色 */
+    animation: fadeIn 2s ease-in-out; /* 页面渐显效果 */
 }
 
-h1, h2 {
-    font-family: 'Merriweather', serif; /* 使用更优雅的字体 */
-    color: #fff;
-    font-size: 3em;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* 添加文字阴影 */
+/* 页面渐显动画 */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
+/* 文字显示样式 */
+#videoText {
+    position: absolute;
+    bottom: 20%;
+    text-align: center;
+    font-size: 36px;
+    color: #ffffff;
+    opacity: 0;
+    animation: fadeInText 1s ease-in-out 0.5s forwards;
+}
+
+/* 文字渐显动画 */
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 页面显示的元素 */
 .screen {
     display: none;
     flex-direction: column;
@@ -31,12 +61,28 @@ h1, h2 {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* 更深的阴影 */
     backdrop-filter: blur(15px); /* 添加模糊效果 */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideIn 0.8s ease-out forwards;
+}
+
+/* 按钮和窗口逐渐显示效果 */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .screen.active {
     display: flex;
 }
 
+/* 按钮样式 */
 .styled-btn {
     background: linear-gradient(135deg, #ff7e5f, #feb47b); /* 更具高级感的渐变色 */
     color: #fff;
@@ -46,12 +92,19 @@ h1, h2 {
     font-size: 20px;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    opacity: 0; /* 初始状态为透明 */
+    animation: fadeInBtn 0.8s ease-out 0.5s forwards; /* 按钮渐显动画 */
 }
 
-.styled-btn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 12px 25px rgba(255, 165, 0, 0.3); /* 更具质感的按钮效果 */
-    background: linear-gradient(135deg, #feb47b, #ff7e5f); /* 动态渐变效果 */
+@keyframes fadeInBtn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 /* 按钮组 */
@@ -72,6 +125,8 @@ h1, h2 {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s, transform 0.2s;
+    opacity: 0; /* 初始状态为透明 */
+    animation: fadeInBtn 0.5s ease-out 0.5s forwards; /* 按钮渐显动画 */
 }
 
 .primary-btn:hover {
