@@ -1,7 +1,7 @@
 /* 启动动画 */
 body {
     font-family: 'Roboto', sans-serif;
-    background-image: url('bg.jpg'); /* 替换为您的图片URL */
+    background-image: url('bg.jpg'); 
     background-size: cover;
     background-position: center;
     margin: 0;
