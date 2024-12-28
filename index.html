@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三分天注定</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 主界面 -->
+    <div id="homeScreen" class="screen active">
+        <div class="header">
+            <h1>抽签决定App</h1>
+        </div>
+        <div class="button-group">
+            <button id="decideFoodBtn" class="styled-btn">决定吃什么</button>
+            <button id="decideBathOrderBtn" class="styled-btn">决定谁先洗澡</button>
+        </div>
+    </div>
+
+    <!-- 决定吃什么界面 -->
+    <div id="foodScreen" class="screen">
+        <h2>决定吃什么</h2>
+        <button id="startFoodDrawBtn" class="primary-btn">开始抽签</button>
+        <div id="foodResult" class="result"></div>
+        <div class="button-group">
+            <button id="goToSettingsBtn" class="secondary-btn">设置</button>
+            <button class="centered-btn">返回主页</button>
+        </div>
+    </div>
+
+    <!-- 决定谁先洗澡界面 -->
+    <div id="bathScreen" class="screen">
+        <h2>决定谁先洗澡</h2>
+        <div id="bathSetup" class="setup-section">
+            <label for="numPeople">请输入人数：</label>
+            <input type="number" id="numPeople" min="1" max="10">
+            <button id="setPeopleBtn" class="primary-btn">确定</button>
+        </div>
+        <div id="peopleNames" class="names-section" style="display: none;">
+            <h3>请输入每个人的名字（可留空）</h3>
+            <div id="namesInputContainer"></div>
+            <button id="saveNamesBtn" class="primary-btn">保存名字</button>
+        </div>
+        <button id="startBathDrawBtn" class="primary-btn">开始抽签</button>
+        <div id="bathResult" class="result"></div>
+        <div class="button-group">
+            <button id="bathSettingsBtn" class="secondary-btn">设置</button>
+            <button class="centered-btn">返回主页</button>
+        </div>
+    </div>
+
+    <!-- 设置界面 -->
+    <div id="settingsScreen" class="screen">
+        <h2>设置</h2>
+        <div class="button-group">
+            <button id="initialSettingsBtn" class="secondary-btn">初始抽签选项设置</button>
+            <button id="subSettingsBtn" class="secondary-btn">二次抽签选项设置</button>
+            <button id="resetBtn" class="danger-btn">重置所有选项为默认</button>
+            <button class="centered-btn">返回主页</button>
+        </div>
+    </div>
+
+    <!-- 初始抽签设置界面 -->
+    <div id="initialSettingsScreen" class="screen">
+        <h2>初始抽签选项设置</h2>
+        <ul id="initialChoicesList" class="choices-list"></ul>
+        <button id="addInitialChoiceBtn" class="primary-btn">添加选项</button>
+        <button class="centered-btn">返回设置</button>
+    </div>
+
+    <!-- 二次抽签设置界面 -->
+    <div id="subSettingsScreen" class="screen">
+        <h2>二次抽签选项设置</h2>
+        <div id="subChoicesSettings" class="sub-choices-container"></div>
+        <button class="centered-btn">返回设置</button>
+    </div>
+
+    <!-- 模态框 -->
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <span class="closeBtn">&times;</span>
+            <label for="newChoiceName">选项名称：</label>
+            <input type="text" id="newChoiceName" placeholder="请输入选项名称">
+            <button id="confirmAdd" class="primary-btn">添加</button>
+        </div>
+    </div>
+
+    <!-- JavaScript 文件 -->
+    <script src="script.js"></script>
+</body>
+</html>
