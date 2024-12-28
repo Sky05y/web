@@ -14,12 +14,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // 初始化数据
     let initialChoices = JSON.parse(localStorage.getItem('initialChoices')) || ['1楼', '2楼', '3楼', '4楼', '点外卖', '出去吃', '食全食美', '匠心源', '潮汕捞面'];
     let subChoices = JSON.parse(localStorage.getItem('subChoices')) || {
-        '1楼': ['饺子', '老上海', '炒饭/面','粥'],
-        '2楼': ['潮汕汤面', '大众菜', '港式烧腊','蒙自源','麻辣烫'],
-        '3楼': ['麻辣烫', '柳州螺蛳粉','唐三酱铁板板&意面', '小锅猪肚鸡','茶香鸡', '巴西烤肉饭','朱家小馆', '大众菜', '烤盘饭', '小禾饭'],
-        '4楼': ['煲仔饭', '汤粉' , '自选菜' , '蒸粉面' ,'手撕鸡猪脚饭'],
-        '点外卖': ['烧腊','麻辣烫冒菜','饺子馄饨','汉堡薯条','意面披萨','快餐便当','米粉面馆','炸鸡炸串','能量西餐','日料寿司','韩式料理']
-    };
+      '1楼': ['饺子', '老上海', '炒饭/面', '粥'],
+      '2楼': ['潮汕汤面', '大众菜', '港式烧腊', '蒙自源', '麻辣烫'],
+      '3楼': ['麻辣烫', '柳州螺蛳粉', '唐三酱铁板板&意面', '小锅猪肚鸡', '茶香鸡', '巴西烤肉饭', '朱家小馆', '大众菜', '烤盘饭', '小禾饭'],
+      '4楼': ['煲仔饭', '汤粉', '自选菜', '蒸粉面', '手撕鸡猪脚饭'],
+      '点外卖': ['烧腊', '麻辣烫冒菜', '饺子馄饨', '汉堡薯条', '意面披萨', '快餐便当', '米粉面馆', '炸鸡炸串', '能量西餐', '日料寿司', '韩式料理']
+  };
     let bathOrder = JSON.parse(localStorage.getItem('bathOrder')) || [];
     let bathNames = JSON.parse(localStorage.getItem('bathNames')) || [];
 
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('startFoodDrawBtn').addEventListener('click', function () {
         const selectedFloor = initialChoices[Math.floor(Math.random() * initialChoices.length)];
         let foodResult = selectedFloor;
-        if (subChoices[selectedFloor]) {
+        if (subChoices[selectedFloor] && Array.isArray(subChoices[selectedFloor]) && subChoices[selectedFloor].length > 0) {
             const selectedFood = subChoices[selectedFloor][Math.floor(Math.random() * subChoices[selectedFloor].length)];
             foodResult += ' - ' + selectedFood;
         }
