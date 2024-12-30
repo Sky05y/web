@@ -12,6 +12,7 @@ body {
     height: 100vh;
     color: #ffffff; /* 文字颜色为白色 */
     animation: fadeIn 2s ease-in-out; /* 页面渐显效果 */
+    transition: background-color 0.5s ease;
 }
 
 /* 页面渐显动画 */
@@ -200,4 +201,45 @@ body {
 
 .modal button:hover {
     background-color: #45a049;
+}
+
+.time {
+    font-size: 1.5em;
+    color: #333; /* 默认文字颜色 */
+    background-color: rgba(255, 255, 255, 0.7);  /* 非全屏时透明背景 */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    transition: transform 1s ease-in-out, top 1s ease-in-out, left 1s ease-in-out, width 1s ease-in-out, height 1s ease-in-out, padding 1s ease-in-out; /* 同时平移和缩放 */
+    z-index: 100;
+}
+
+/* 放大后的样式 */
+.time.fullscreen {
+    font-size: 6em;  /* 放大字体 */
+    color: #fff; /* 全屏时文字颜色变为白色 */
+    background-color: #000;  /* 全屏时背景变为黑色 */
+    top: 50%;  /* 垂直居中 */
+    left: 50%;  /* 水平居中 */
+    transform: translate(-50%, -50%) scale(1);  /* 缩放和平移 */
+    width: 80%;  /* 宽度占屏幕80% */
+    height: 80%;  /* 高度占屏幕80% */
+    padding: 40px;  /* 增加内边距 */
+    justify-content: center;  /* 水平居中 */
+    align-items: center;  /* 垂直居中 */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);  /* 更强的阴影效果 */
+}
+
+/* 恢复时的平滑缩小效果 */
+.time:not(.fullscreen) {
+    transform: translate(0%, 0%) scale(1);  /* 初始状态 */
+    width: auto;  /* 自动宽度 */
+    height: auto;  /* 自动高度 */
+    padding: 15px;  /* 初始内边距 */
+    top: 20px;  /* 初始位置 */
+    left: 20px;  /* 初始位置 */
 }

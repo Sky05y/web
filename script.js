@@ -94,7 +94,18 @@ document.addEventListener('DOMContentLoaded', function () {
           namesContainer.appendChild(input);
       });
   }
+  function updateTime() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');  // 月份从0开始，+1调整
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
 
+    const timeString = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    document.getElementById('time').textContent = timeString;
+}
   // 保存名字按钮
   document.getElementById('saveNamesBtn').addEventListener('click', function () {
       showScreen(bathScreen);
@@ -212,7 +223,13 @@ document.addEventListener('DOMContentLoaded', function () {
           }
       };
   });
+    // 点击时钟时切换全屏和恢复
+document.getElementById('time').addEventListener('click', function () {
+    this.classList.toggle('fullscreen');  // 切换 .fullscreen 类
 
+    // 切换背景和时钟文字颜色
+    document.body.classList.toggle('hidden');
+});
   // 渲染二次抽签选项
   function renderSubChoicesSettings() {
       const subChoicesDiv = document.getElementById('subChoicesSettings');
@@ -286,4 +303,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 渲染二次抽签选项（初始化时）
   renderSubChoicesSettings();
+  setInterval(updateTime, 1000);
+  updateTime();
 });
